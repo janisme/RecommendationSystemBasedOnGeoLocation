@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Forecast - Predict - Update Weight Table</h1>
+    </div>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h3">Merged Table - Last Version {{ mergedTableLastVersion }}</h1>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+                <th>W0</th>
+                <th>W1</th>
+                <th>W2</th>
+                <th>ID MergedTable</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+  
+      {% for i,a,b,c,d in df_weights.data %}
+      <tr>
+          <td> {{ a }}   </td>
+          <td> {{ b }}   </td>
+          <td> {{ c }}   </td>
+          <td> {{ d }}   </td>
+        </tr>
+      {% endfor %}
+  
+          </tbody>
+      </table>
+  </div>
+
+
+    <div class="text-right">
+        <div class="btn-group mr-2 ">
+            <a class="nav-link" href="/Interface/forecast_predict_update?update=1">  
+              <button type="button" class="btn btn-lg btn-block btn-primary" 
+              data-toggle="tooltip" data-placement="bottom" title="Update the Versions of Forecast Weight table."
+              
+              {% if mergedTableLastVersion <= df_weightsLastVersion %}
+                disabled
+              {% endif %}
+              
+              >
+              UPDATE</button>
+              </a>
+        </div>
+      </div>
+      <div class="text-left">
+          <h6 class="h6">* This update could take several minutes (more than 10 minutes)</h6>
+      </div>    
+
+
+{% endblock %}

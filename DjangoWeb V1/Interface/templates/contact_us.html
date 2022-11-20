@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+<!doctype html>
+{% include 'js.html' %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title> GSSI</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/dashboard/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %} " rel="stylesheet" type="text/css">
+    <!-- <link rel="stylesheet" href="{% static 'bootstrap-table.css"> -->
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{% static 'dashboard.css' %}" rel="stylesheet">
+    <link href="{% static 'gmaps.css' %}" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">
+      <span data-feather="activity"></span>
+    Intership Stats
+  </a>
+  <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="{% url 'logout' %}">Sign out</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+                <a class="nav-link" href="/Interface/">
+                  <span data-feather="home"></span>
+                  Home
+                </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Interface/descriptiveStats"
+               id="btn-1" data-toggle="collapse" data-target="#submenu1" aria-expanded="true">
+              <span data-feather="codepen"></span>
+              Descriptive Statistics
+            </a>
+            <ul class="nav collapse" id="submenu1" role="menu" aria-labelledby="btn-1">
+              <li>
+                  <a class="nav-link" href="/Interface/descriptiveStats">
+                    <span data-feather="codepen"></span>
+                    Table Statistics
+                  </a>
+              </li>
+              <li>
+                  <a class="nav-link" href="/Interface/descriptiveStats">
+                    <span data-feather="filter"></span>
+                    Filter
+                  </a>
+              </li>
+              <li>
+                  <a class="nav-link" href="/Interface/maps">
+                    <span data-feather="map"></span>
+                    Maps
+                  </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="dollar-sign"></span>
+              Forecast
+            </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="dollar-sign"></span>
+                $$$$Program Evolution
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="dollar-sign"></span>
+                $$$$Enterprise Evolution
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">
+                <span data-feather="dollar-sign"></span>
+                $$$$Predict Interships
+              </a>
+          </li>
+        </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Administration</span>
+          <a class="d-flex align-items-center text-muted" href="#">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="/Interface/uploadcsv">
+              <span data-feather="file-plus"></span>
+              Add New Data
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Interface/etl">
+              <span data-feather="layers"></span>
+              ETL
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Interface/dataCRUD">
+              <span data-feather="database"></span>
+              SHOW Data
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Interface/dataCRUD">
+              <span data-feather="database"></span>
+              Users
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+
+      {% block content %}
+    <div class="offset-3 col-md-6">
+     <div class="content-section text-white mt-5 p-4" style="background:#3a414c;">
+        <h3 style= "color:white"> Fill in Your details for us to reach You </h3>
+
+        <form role="form" action="" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+           <button class="btn btn-outline-info" type="submit">Send</button>
+        </form>
+    </div>
+    </div>
+      {% endblock %}
+
+
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="/docs/4.3/assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+      <script src="{% static 'js/bootstrap.bundle.min.js' %}" integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+        <script src="{% static 'dashboard.js'%} "></script>
+        <!-- <script src="{% static 'pandas_bootstrap_table.js'%}""></script> -->
+        <!-- <script src="{% static 'feather.min.js'%} "></script> -->
+        <!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      {% block jquery %}{% endblock %}
+    })
+    </script>
+      </body>
+</html>

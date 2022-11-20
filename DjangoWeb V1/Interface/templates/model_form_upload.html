@@ -1,0 +1,55 @@
+﻿{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Add New Data</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <!-- <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
+      <button type="button" class="btn btn-sm btn-outline-secondary">Export</button> -->
+    </div>
+    <!-- <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+      <span data-feather="calendar"></span>
+      This week
+    </button> -->
+  </div>
+</div>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+      <script type="text/javascript">
+                    window.onload = function() {$("#id_separator").hide();};
+                    //$(function () { $('#id_separator').hide() });
+      </script>
+
+    {{ form.as_p }}
+
+      <script type="text/javascript">
+          $('#id_fileFormat').on('change', function ()
+          {
+                var value = $(this).val();
+                if (value == "csv") {
+                    $('#id_separator').hide();
+                }
+                else {
+                    $('#id_separator').show();
+                }
+           });
+           
+      </script>
+
+<!--
+    <p>{{ form.fileFormat.label_tag }} {{  form.fileFormat }}</p>
+    <p>{{ form.selectedtable.label_tag }} {{ form.selectedtable }} </p> -->
+
+    <button type="submit">Upload</button>
+  </form>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}/> 
+    {% endfor %}
+</ul>
+{% endif %}
+
+  <p><a href="{% url 'home' %}">Return to home</a></p>
+{% endblock %}

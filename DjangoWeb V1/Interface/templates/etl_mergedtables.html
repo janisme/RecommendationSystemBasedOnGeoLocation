@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">ETL</h1>
+<!--
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <label class="mdb-main-label">Select File Version:</label>
+        <select class="mdb-select md-form colorful-select dropdown-dark">
+          <option value="1">V1 - 31/01/2017</option>
+          <option value="2">V2 - 31/01/2017</option>
+          <option value="3">V3 - 31/01/2017</option>
+        </select>
+        <div class="btn-group mr-2">
+          <button type="button" class="btn btn-sm btn-outline-primary">Apply</button>
+        </div>
+      </div>  -->
+      
+    </div>  
+   
+
+    <h2>Merged Table - Version: {{ VERSION }}</h2>
+  
+    <div class="row">
+      <div class="col-md-4 mb-4 text-center">
+        <div class="card card-cascade narrower">
+          <div class="card-header">
+            <h5 class="my-0 font-weight-normal">Null Values</h5>
+          </div>
+          <div class="card-body card-body-cascade text-center">
+            
+            <div class="table-responsive">       
+              <table class="table table-striped table-sm">
+              <thead>
+                <tr>              
+                    <th>COLUMN</th>
+                    <th>NULL COUNT</th>
+                    <!-- <th>PAYS</th>
+                    <th>SITE</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                  {% for a,b in MERGEDTABLES.data %}
+                  <tr>
+                      <td>{{ a }}</td>
+                      <td>{{ b }}</td>
+                      <!-- <td>{{ c }}</td>
+                      <td>{{ d }}</td>
+                      <td>{{ e }}</td> -->
+                  </tr>
+                  {% endfor %}
+              </tbody>
+            </table>
+          </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4 text-center">
+        <div class="card card-cascade narrower">
+          <div class="card-header">
+            <h5 class="my-0 font-weight-normal">Number of New Lines</h5>
+          </div>
+          <div class="card-body card-body-cascade text-center">
+            
+            <h6 class="my-0 font-weight-normal">{{ NUMBERLINES }}</h6>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4 text-center">
+        <div class="card card-cascade narrower">
+          <div class="card-header">
+            <h5 class="my-0 font-weight-normal">Version - Method</h5>
+          </div>
+          <div class="card-body card-body-cascade text-center">
+            
+            <h6 class="my-0 font-weight-normal">{{ VERSION }}</h6>
+            
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+{% endblock %}

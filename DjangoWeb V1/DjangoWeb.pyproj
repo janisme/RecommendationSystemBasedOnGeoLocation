@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <Name>DjangoWeb</Name>
+    <RootNamespace>DjangoWeb</RootNamespace>
+    <SuppressEnvironmentCreationPrompt>True</SuppressEnvironmentCreationPrompt>
+    <InterpreterId>Global|ContinuumAnalytics|Anaconda37-64</InterpreterId>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>854691ea-aa19-41c9-86ee-83fc2214afaa</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectTypeGuids>{5F0BE9CA-D677-4A4D-8806-6076C0FAAD37};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <StartupFile>manage.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+    <LaunchProvider>Django launcher</LaunchProvider>
+    <DjangoSettingsModule>DjangoWeb.settings</DjangoSettingsModule>
+    <OutputPath>.</OutputPath>
+    <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="app\forms.py" />
+    <Compile Include="app\models.py" />
+    <Compile Include="app\tests.py" />
+    <Compile Include="app\views.py" />
+    <Compile Include="app\__init__.py" />
+    <Compile Include="app\migrations\__init__.py" />
+    <Compile Include="forecast\admin.py" />
+    <Compile Include="forecast\apps.py" />
+    <Compile Include="forecast\migrations\__init__.py" />
+    <Compile Include="forecast\models.py" />
+    <Compile Include="forecast\tests.py" />
+    <Compile Include="forecast\views.py" />
+    <Compile Include="forecast\__init__.py" />
+    <Compile Include="homescreen\admin.py" />
+    <Compile Include="homescreen\apps.py" />
+    <Compile Include="homescreen\forms.py" />
+    <Compile Include="homescreen\migrations\__init__.py" />
+    <Compile Include="homescreen\models.py" />
+    <Compile Include="homescreen\tests.py" />
+    <Compile Include="homescreen\urls.py" />
+    <Compile Include="homescreen\views.py" />
+    <Compile Include="homescreen\__init__.py" />
+    <Compile Include="Interface\admin.py" />
+    <Compile Include="Interface\apps.py" />
+    <Compile Include="Interface\forms.py" />
+    <Compile Include="Interface\map.py" />
+    <Compile Include="Interface\migrations\__init__.py" />
+    <Compile Include="Interface\models.py" />
+    <Compile Include="Interface\scriptETL.py" />
+    <Compile Include="Interface\scriptForecast.py" />
+    <Compile Include="Interface\tests.py" />
+    <Compile Include="Interface\views.py" />
+    <Compile Include="Interface\__init__.py" />
+    <Compile Include="manage.py" />
+    <Compile Include="DjangoWeb\__init__.py" />
+    <Compile Include="DjangoWeb\settings.py" />
+    <Compile Include="DjangoWeb\urls.py" />
+    <Compile Include="DjangoWeb\wsgi.py" />
+    <Compile Include="dataCRUD\admin.py" />
+    <Compile Include="dataCRUD\apps.py" />
+    <Compile Include="dataCRUD\models.py" />
+    <Compile Include="dataCRUD\tests.py" />
+    <Compile Include="dataCRUD\views.py" />
+    <Compile Include="dataCRUD\__init__.py" />
+    <Compile Include="UploadingFile\admin.py" />
+    <Compile Include="UploadingFile\apps.py" />
+    <Compile Include="UploadingFile\forms.py" />
+    <Compile Include="UploadingFile\migrations\__init__.py" />
+    <Compile Include="UploadingFile\models.py" />
+    <Compile Include="UploadingFile\tests.py" />
+    <Compile Include="UploadingFile\views.py" />
+    <Compile Include="UploadingFile\__init__.py" />
+    <Compile Include="users\admin.py" />
+    <Compile Include="users\apps.py" />
+    <Compile Include="users\forms.py" />
+    <Compile Include="users\migrations\__init__.py" />
+    <Compile Include="users\models.py" />
+    <Compile Include="users\tests.py" />
+    <Compile Include="users\urls.py" />
+    <Compile Include="users\views.py" />
+    <Compile Include="users\__init__.py" />
+    <Compile Include="__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".vs\" />
+    <Folder Include=".vs\DjangoWeb\" />
+    <Folder Include=".vs\DjangoWeb\v16\" />
+    <Folder Include="app\" />
+    <Folder Include="app\migrations\" />
+    <Folder Include="app\migrations\__pycache__\" />
+    <Folder Include="app\static\" />
+    <Folder Include="app\static\app\" />
+    <Folder Include="app\static\app\content\" />
+    <Folder Include="app\static\app\fonts\" />
+    <Folder Include="app\static\app\scripts\" />
+    <Folder Include="app\templates\" />
+    <Folder Include="app\templates\app\" />
+    <Folder Include="app\__pycache__\" />
+    <Folder Include="CSVFile\" />
+    <Folder Include="DjangoWeb\" />
+    <Folder Include="DjangoWeb\__pycache__\" />
+    <Folder Include="forecast\" />
+    <Folder Include="forecast\migrations\" />
+    <Folder Include="homescreen\" />
+    <Folder Include="homescreen\migrations\" />
+    <Folder Include="homescreen\migrations\__pycache__\" />
+    <Folder Include="homescreen\static\" />
+    <Folder Include="homescreen\static\homescreen\" />
+    <Folder Include="homescreen\templates\" />
+    <Folder Include="homescreen\templates\homescreen\" />
+    <Folder Include="homescreen\__pycache__\" />
+    <Folder Include="Interface\" />
+    <Folder Include="Interface\migrations\" />
+    <Folder Include="Interface\static\" />
+    <Folder Include="Interface\static\css\" />
+    <Folder Include="Interface\static\images\" />
+    <Folder Include="Interface\static\js\" />
+    <Folder Include="Interface\templates\" />
+    <Folder Include="obj\" />
+    <Folder Include="obj\Debug\" />
+    <Folder Include="dataCRUD\" />
+    <Folder Include="dataCRUD\migrations\" />
+    <Folder Include="dataCRUD\migrations\__pycache__\" />
+    <Folder Include="dataCRUD\__pycache__\" />
+    <Folder Include="UploadingFile\" />
+    <Folder Include="UploadingFile\migrations\" />
+    <Folder Include="users\" />
+    <Folder Include="users\migrations\" />
+    <Folder Include="users\migrations\__pycache__\" />
+    <Folder Include="users\templates\" />
+    <Folder Include="users\templates\users\" />
+    <Folder Include="users\__pycache__\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\migrations\__pycache__\__init__.cpython-37.pyc" />
+    <Content Include="app\static\app\content\bootstrap.css.map" />
+    <Content Include="app\static\app\content\bootstrap.min.css.map" />
+    <Content Include="app\static\app\scripts\bootstrap.bundle.js" />
+    <Content Include="app\static\app\scripts\bootstrap.bundle.js.map" />
+    <Content Include="app\static\app\scripts\bootstrap.bundle.min.js" />
+    <Content Include="app\static\app\scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="app\static\app\scripts\bootstrap.js.map" />
+    <Content Include="app\static\app\scripts\bootstrap.min.js.map" />
+    <Content Include="app\static\app\scripts\jquery.js" />
+    <Content Include="app\static\app\scripts\jquery.min.js" />
+    <Content Include="app\static\app\scripts\jquery.min.map" />
+    <Content Include="app\static\app\scripts\jquery.slim.js" />
+    <Content Include="app\static\app\scripts\jquery.slim.min.js" />
+    <Content Include="app\static\app\scripts\jquery.slim.min.map" />
+    <Content Include="app\static\app\scripts\jquery.validate.min.js" />
+    <Content Include="app\templates\app\layout.html" />
+    <Content Include="app\templates\app\index.html" />
+    <Content Include="app\templates\app\adminDashboard.html" />
+    <Content Include="Create_Tables.sql" />
+    <Content Include="homescreen\migrations\__pycache__\__init__.cpython-37.pyc" />
+    <Content Include="homescreen\static\baa.png" />
+    <Content Include="homescreen\static\bg.jpg" />
+    <Content Include="homescreen\static\bg1.jpg" />
+    <Content Include="homescreen\static\bg3.jpg" />
+    <Content Include="homescreen\static\bg4.jpg" />
+    <Content Include="homescreen\static\bg5.jpg" />
+    <Content Include="homescreen\static\chicago.jpg" />
+    <Content Include="homescreen\static\homescreen\la.jpg" />
+    <Content Include="homescreen\static\homescreen\main.css" />
+    <Content Include="homescreen\static\la.jpg" />
+    <Content Include="homescreen\static\la1.jpg" />
+    <Content Include="homescreen\static\la2.jpg" />
+    <Content Include="homescreen\static\la3.jpg" />
+    <Content Include="homescreen\static\la4.jpg" />
+    <Content Include="homescreen\static\laa1.jpg" />
+    <Content Include="homescreen\static\laa3.jpg" />
+    <Content Include="homescreen\static\laaa4.jpg" />
+    <Content Include="homescreen\static\laaa6.jpg" />
+    <Content Include="homescreen\static\logo.jpg" />
+    <Content Include="homescreen\static\ny.jpg" />
+    <Content Include="homescreen\static\textlogo.png" />
+    <Content Include="homescreen\templates\homescreen\about.html" />
+    <Content Include="homescreen\templates\homescreen\base.html" />
+    <Content Include="homescreen\templates\homescreen\contact.html" />
+    <Content Include="homescreen\templates\homescreen\contact_template.txt" />
+    <Content Include="homescreen\templates\homescreen\home.html" />
+    <Content Include="homescreen\__pycache__\admin.cpython-37.pyc" />
+    <Content Include="homescreen\__pycache__\apps.cpython-37.pyc" />
+    <Content Include="homescreen\__pycache__\forms.cpython-37.pyc" />
+    <Content Include="homescreen\__pycache__\models.cpython-37.pyc" />
+    <Content Include="homescreen\__pycache__\urls.cpython-37.pyc" />
+    <Content Include="homescreen\__pycache__\views.cpython-37.pyc" />
+    <Content Include="homescreen\__pycache__\__init__.cpython-37.pyc" />
+    <Content Include="Interface\data.csv" />
+    <Content Include="Interface\templates\dataCRUD1.html" />
+    <Content Include="Interface\templates\uploadcsv.html" />
+    <Content Include="app\__pycache__\forms.cpython-37.pyc" />
+    <Content Include="app\__pycache__\models.cpython-37.pyc" />
+    <Content Include="app\__pycache__\views.cpython-37.pyc" />
+    <Content Include="app\__pycache__\__init__.cpython-37.pyc" />
+    <Content Include="db.sqlite3.2019.05.08" />
+    <Content Include="DjangoWeb\dashboard.OLD" />
+    <Content Include="DjangoWeb\__pycache__\settings.cpython-37.pyc" />
+    <Content Include="DjangoWeb\__pycache__\urls.cpython-37.pyc" />
+    <Content Include="DjangoWeb\__pycache__\wsgi.cpython-37.pyc" />
+    <Content Include="DjangoWeb\__pycache__\__init__.cpython-37.pyc" />
+    <Content Include="Interface\static\css\bootstrap-grid.css" />
+    <Content Include="Interface\static\css\bootstrap-grid.css.map" />
+    <Content Include="Interface\static\css\bootstrap-grid.min.css" />
+    <Content Include="Interface\static\css\bootstrap-grid.min.css.map" />
+    <Content Include="Interface\static\css\bootstrap-reboot.css" />
+    <Content Include="Interface\static\css\bootstrap-reboot.css.map" />
+    <Content Include="Interface\static\css\bootstrap-reboot.min.css" />
+    <Content Include="Interface\static\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Interface\static\css\bootstrap.css" />
+    <Content Include="Interface\static\css\bootstrap.css.map" />
+    <Content Include="Interface\static\css\bootstrap.min.css" />
+    <Content Include="Interface\static\css\bootstrap.min.css.map" />
+    <Content Include="Interface\static\dashboard.css" />
+    <Content Include="Interface\static\dashboard.js" />
+    <Content Include="Interface\static\feather.js" />
+    <Content Include="Interface\static\feather.min.js" />
+    <Content Include="Interface\static\gmaps.css" />
+    <Content Include="Interface\static\images\Folder-Data-icon.png" />
+    <Content Include="Interface\static\images\maps-icon.png" />
+    <Content Include="Interface\static\images\statistics1.png" />
+    <Content Include="Interface\static\js\bootstrap.bundle.js" />
+    <Content Include="Interface\static\js\bootstrap.bundle.js.map" />
+    <Content Include="Interface\static\js\bootstrap.bundle.min.js" />
+    <Content Include="Interface\static\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Interface\static\js\bootstrap.js" />
+    <Content Include="Interface\static\js\bootstrap.js.map" />
+    <Content Include="Interface\static\js\bootstrap.min.js" />
+    <Content Include="Interface\static\js\bootstrap.min.js.map" />
+    <Content Include="Interface\templates\base.html" />
+    <Content Include="Interface\templates\descriptiveStats.html" />
+    <Content Include="Interface\templates\descriptiveStats2.html" />
+    <Content Include="Interface\templates\home.html" />
+    <Content Include="Interface\templates\maps.html" />
+    <Content Include="Interface\templates\dataCRUD.html" />
+    <Content Include="obj\Debug\DjangoWeb.pyproj.FileListAbsolute.txt" />
+    <Content Include="dataCRUD\migrations\__pycache__\0001_initial.cpython-37.pyc" />
+    <Content Include="dataCRUD\migrations\__pycache__\__init__.cpython-37.pyc" />
+    <Content Include="dataCRUD\__pycache__\admin.cpython-37.pyc" />
+    <Content Include="dataCRUD\__pycache__\models.cpython-37.pyc" />
+    <Content Include="dataCRUD\__pycache__\views.cpython-37.pyc" />
+    <Content Include="dataCRUD\__pycache__\__init__.cpython-37.pyc" />
+    <Content Include="requirements.txt" />
+    <Content Include="db.sqlite3" />
+    <Content Include="app\static\app\content\bootstrap.css" />
+    <Content Include="app\static\app\content\bootstrap.min.css" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="app\static\app\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="app\static\app\scripts\bootstrap.js" />
+    <Content Include="app\static\app\scripts\bootstrap.min.js" />
+    <Content Include="app\templates\app\layoutOriginal.html" />
+    <Content Include="app\templates\app\login.html" />
+    <Content Include="app\templates\app\loginpartial.html" />
+    <Content Include="users\migrations\__pycache__\__init__.cpython-37.pyc" />
+    <Content Include="users\templates\users\login.html" />
+    <Content Include="users\templates\users\logout.html" />
+    <Content Include="users\templates\users\password_reset.html" />
+    <Content Include="users\templates\users\password_reset_complete.html" />
+    <Content Include="users\templates\users\password_reset_confirm.html" />
+    <Content Include="users\templates\users\password_reset_done.html" />
+    <Content Include="users\templates\users\register.html" />
+    <Content Include="users\__pycache__\admin.cpython-37.pyc" />
+    <Content Include="users\__pycache__\apps.cpython-37.pyc" />
+    <Content Include="users\__pycache__\forms.cpython-37.pyc" />
+    <Content Include="users\__pycache__\models.cpython-37.pyc" />
+    <Content Include="users\__pycache__\urls.cpython-37.pyc" />
+    <Content Include="users\__pycache__\views.cpython-37.pyc" />
+    <Content Include="users\__pycache__\__init__.cpython-37.pyc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="readme.html">
+      <SubType>WebBrowser</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda37-64" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

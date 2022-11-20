@@ -1,0 +1,378 @@
+{% extends "base.html" %}
+{% load static %} 
+{% static "indu.csv" %}
+<!--https://stackoverflow.com/questions/54960091/loading-a-csv-file-in-d3-js-inside-django-is-not-working -->
+<script>
+{% block jquery %}
+$.ajax({
+    success: function(data) {
+        setchart()
+        setchart2()
+    },
+    error: function(error_data){
+        console.log("error")
+        console.log(error_data)
+    }
+})
+prgcolorset = [
+    'rgba(73,170,30,0.4)',
+    'rgba(50, 106, 21,0.4)',
+    'rgba(219, 58, 29,0.4)',
+    'rgba(150, 58, 29, 0.4)',
+    'rgba(60, 206, 209, 0.4)',
+    'rgba(60, 157, 209, 0.4)',
+    'rgba(60, 90, 209, 0.4)',
+    'rgba(280, 243, 36, 0.4)',
+    'rgba(230, 243, 36, 0.4)',
+]
+prgcolorborderset =[
+    'rgba(73,170,30,1)',
+    'rgba(50, 106, 21,1)',
+    'rgba(219, 58, 29, 1)',
+    'rgba(150, 58, 29, 1)',
+    'rgba(60, 206, 209, 1)',
+    'rgba(60, 157, 209, 1)',
+    'rgba(60, 90, 209, 1)',
+    'rgba(280, 243, 36, 1)',
+    'rgba(230,243, 36, 1)',
+]
+function setchart() {
+    var ctx = document.getElementById('myChart').getContext('2d');
+    ctx.shadowBlur=20;
+    ctx.shadowColor="black";
+    var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels:{{ enterpYear }} ,
+                datasets: [
+                  {
+                    label: '{{label1}}',
+                    data: {{ enterpQTD1 }},
+                    //backgroundColor: prgcolorset ,
+                    borderColor: prgcolorborderset,
+                    borderWidth: 1,
+                    fill: false
+                  },
+                  {
+                    label: '{{label1}}-C:99',
+                    data: {{ enterpQTD1L }},
+                    //backgroundColor: prgcolorset ,
+                    borderColor: prgcolorborderset,
+                    borderWidth: 1,
+                    fill: false,
+                    borderDash: [10,5]
+                  },
+                  {
+                    label: '{{label2}}',
+                    data: {{ enterpQTD2 }},
+                    //backgroundColor: prgcolorset ,
+                    borderColor:'#26c6da',
+                    borderWidth: 1,
+                    fill: false
+                  },
+                  {
+                    label: '{{label2}}-C:66',
+                    data: {{ enterpQTD2L }},
+                    //backgroundColor: prgcolorset ,
+                    borderColor:'#26c6da',
+                    borderWidth: 1,
+                    fill: false,
+                    borderDash: [10,5]
+                  },
+                  {
+                    label: '{{label3}}',
+                    data: {{ enterpQTD3 }},
+                    //backgroundColor: prgcolorset ,
+                    borderColor:'#5c6bc0',
+                    borderWidth: 1,
+                    fill: false
+                  },
+                  {
+                    label: '{{label3}}-C:-4',
+                    data: {{ enterpQTD3L }},
+                    //backgroundColor: prgcolorset ,
+                    borderColor:'#5c6bc0',
+                    borderWidth: 1,
+                    fill: false,
+                    borderDash: [10,5]
+                  }
+                ]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        title: {
+            display: false,
+            text: 'Students per year'
+        },
+        legend: {
+            display: true,
+            position:'bottom',
+        },
+        tooltips: {
+            mode: 'x'
+        }
+    }
+});
+}
+function setchart2() {
+    var ctx = document.getElementById('myChart2').getContext('2d');
+    ctx.shadowBlur=20;
+    ctx.shadowColor="black";
+    var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels:{{ enterpYear }} ,
+                datasets: [
+                {
+                    label: '{{label1A}}',
+                    data: {{ enterpQTD1A }},
+                    //backgroundColor: prgcolorset ,
+                    borderColor: prgcolorborderset,
+                    borderWidth: 1,
+                    fill: false
+                  },
+                  {
+                    label: '{{label1A}}-C:99',
+                    data: {{ enterpQTD1LA }},
+                    //backgroundColor: prgcolorset ,
+                    borderColor: prgcolorborderset,
+                    borderWidth: 1,
+                    fill: false,
+                    borderDash: [10,5]
+                  },
+                  {
+                    label: '{{label2A}}',
+                    data: {{ enterpQTD2A }},
+                    //backgroundColor: prgcolorset ,
+                    borderColor:'#26c6da',
+                    borderWidth: 1,
+                    fill: false
+                  },
+                  {
+                    label: '{{label2A}}-C:66',
+                    data: {{ enterpQTD2LA }},
+                    //backgroundColor: prgcolorset ,
+                    borderColor:'#26c6da',
+                    borderWidth: 1,
+                    fill: false,
+                    borderDash: [10,5]
+                  },
+                  {
+                    label: '{{label3A}}',
+                    data: {{ enterpQTD3A }},
+                    //backgroundColor: prgcolorset ,
+                    borderColor:'#5c6bc0',
+                    borderWidth: 1,
+                    fill: false
+                  },
+                  {
+                    label: '{{label3A}}-C:14',
+                    data: {{ enterpQTD3LA }},
+                    //backgroundColor: prgcolorset ,
+                    borderColor:'#5c6bc0',
+                    borderWidth: 1,
+                    fill: false,
+                    borderDash: [10,5]
+                  }
+        ]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        title: {
+            display: false,
+            text: 'Students per year'
+        },
+        legend: {
+            display: true,
+            position:'bottom',
+        },
+        tooltips: {
+            mode: 'x'
+        }
+    }
+});
+}
+{% endblock %}
+</script>
+
+
+
+{% block content %}
+
+<form method="GET" >
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Program Evolution</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <label  for="inputState" class="mdb-main-label">RAW DATA Version: </label>
+          <select id="inputState" class="mdb-select md-form colorful-select dropdown-dark" name="version">
+            <option selected>{{ version_filtered }}</option>
+            {% for item in list_versions %}
+            <option>{{ item }}</option>
+            {% endfor %}
+          </select>
+          <div class="btn-group mr-2">
+            <!-- <button type="submit" class="btn btn-primary"> Apply </button> -->
+            <button type="submit" class="btn btn-sm btn-outline-primary">Apply</button>
+          </div>
+        </div>
+  </div>
+  </form>
+
+
+<div class="row" >
+    <div class="col-lg-3 col-md-5 col-sm-5 " >
+      <div class="card card-stats" >
+        <div class="card-body" >
+          <div class="row">
+            <div class="col-2 col-md-3" >
+              <img  src="\static\images\record.png" height="40">
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers">
+                <p class="card-category">Number of </p>
+                <p class="card-title" style="color:#0c2646;  font-size:20px ; font-weight: bold ">
+                  Programs
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <hr>
+          <div class="stats" style="color: #d39e00;" >
+              {{ num_enterp }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-5 col-sm-5">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-5 col-md-4">
+
+                <img  src="\static\images\student.png" height="40">
+
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers">
+                <p class="card-category">Number of </p>
+                <p class="card-title" style="color:#0c2646; font-size:20px ; font-weight: bold ">
+                  Students
+                  <p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <hr>
+          <div class="stats" style="color: #c82333;" >
+            {{ num_stu }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-5 col-sm-5">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-5 col-md-4">
+
+                <img  src="\static\images\enterprise.png" height="40">
+
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers">
+                <p class="card-category">Number of </p>
+                <p class="card-title" style="color:#0c2646; font-size:20px ; font-weight: bold ">
+                      Programs 2016
+                  <p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <hr>
+          <div class="stats" style="color: #34ce57;">
+            {{ num_entrep2016 }}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-5 col-sm-5 " >
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-5 col-md-4">
+                <img  src="\static\images\salary.png" height="40">
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers">
+                <p class="card-category" >Number of</p>
+                <p class="card-title" style="color:#0c2646; font-size:20px ; font-weight: bold ">
+                  Students 2016
+                  <p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <hr>
+          <div class="stats" style="color: #00bbff;">
+            {{ mean_sal }}
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+</div>
+<div class="row">
+
+    <div class="col-lg-6 " >
+        <div class="card-chart flex-column">
+              <div class="card-header ">
+                <h5 class="card-title">Biggest Number Students </h5>
+                 <p class="card-category">per Year</p>
+                <div class="inside">
+                    <canvas class="my-4 w-10" id="myChart" width="100%" height="50"  ></canvas>
+                </div>
+              </div>
+        </div>
+      </div>
+      <div class="col-lg-6 " >
+        <div class="card-chart flex-column">
+              <div class="card-header ">
+                <h5 class="card-title">Most Growing Qtd Students </h5>
+                 <p class="card-category">per Year</p>
+                <div class="inside">
+                    <canvas class="my-4 w-10" id="myChart2" width="100%" height="50"  ></canvas>
+                </div>
+              </div>
+        </div>
+      </div>
+
+    
+</div>
+
+ <!--   Core JS Files   -->
+  <scripst src="../static/assets/js/core/jquery.min.js"></script>
+  <scripst src="../static/assets/js/core/popper.min.js"></script>
+  <scripst src="../static/assets/js/core/bootstrap.min.js"></script>
+  <scripst src="../static/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  
+  <scripst src="htdtps://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <scripst src="https://d3js.org/d3.v4.js"></script> 
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+{% endblock %}

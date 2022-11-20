@@ -1,0 +1,19 @@
+﻿<h1>Display PRG_STUDETN_SITE</h1>
+
+<table>
+    <tr>
+        <th>ID_ANO</th>
+        <th>PRG</th>
+        <th>ANNE_SCOLAIRE</th>
+        <th>SITE</th>
+
+    </tr>
+    {% for item in query_results %}
+    <tr>
+        <td>{{ item.ID_ANO }}</td>
+        <td>{{ item.PRG }}</td>
+        <td>{{ item.ANNE_SCOLAIRE }}</td>
+        <td>{{ item.SITE }}</td>
+    </tr>
+    {% endfor %}
+</table>

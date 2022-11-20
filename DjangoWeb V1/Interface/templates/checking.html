@@ -1,0 +1,142 @@
+<!-- indu 15 may -->
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<form method="GET" >
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Descriptive Statistics</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <label  for="inputState" class="mdb-main-label"> Version: </label>
+          <select id="inputState" class="mdb-select md-form colorful-select dropdown-dark" name="version">
+            <option selected>{{ SELECTED_VERSION }}</option>
+            {% for item in LIST_VERSIONS %}
+            <option>{{ item }}</option>
+            {% endfor %}
+          </select>
+          <div class="btn-group mr-2">
+            <!-- <button type="submit" class="btn btn-primary"> Apply </button> -->
+            <button type="submit" class="btn btn-sm btn-outline-primary">Apply</button>
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+<form method="GET" action="{% url 'filter_chart' %}">
+    <h8><strong> Feel free to choose any option and if a option doesn't interest you, leave it as it is </strong></h8>
+      <div class="container mt-5">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                  <label for="inputState">Program's</label>
+                  <select id="inputState" class="form-control" name="program">
+                    <option selected>Choose...</option>
+                      {% for item in prg %}
+                        <option>{{ item }}</option>
+                      {% endfor %}
+                  </select>
+            </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputState">Ville</label>
+          <select id="inputState" class="form-control" name="ville">
+            <option selected>Choose...</option>
+            {% for item in ville %}
+                <option>{{ item }}</option>
+              {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputState">Code Postal</label>
+          <select id="inputState" class="form-control" name="code_postal">
+            <option selected>Choose...</option>
+            {% for item in cp %}
+                <option>{{ item }}</option>
+              {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputState">Remuneration</label>
+          <select id="inputState" class="form-control" name="remuneration">
+            <option selected>Choose...</option>
+            {% for item in rem %}
+                <option>{{ item }}</option>
+              {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputState">Year's from</label>
+          <select id="inputState" class="form-control" name="years_from">
+            <option selected>Choose...</option>
+            {% for item in year %}
+                <option>{{ item }}</option>
+              {% endfor %}
+          </select>
+            <span class="alert" role="alert" style="color:red">
+                {% if message %}
+                    <h8> Years From-- must be smaller</h8>
+                {% endif %}
+            </span>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputState">Year's To</label>
+          <select id="inputState" class="form-control" name="years_to">
+            <option selected>Choose...</option>
+            {% for item in year %}
+                <option>{{ item }}</option>
+              {% endfor %}
+          </select>
+            <span class="alert" role="alert" style="color:red">
+                {% if message %}
+                    <h8 > Years To-- must be greater</h8>
+                {% endif %}
+            </span>
+        </div>
+ </div>
+        <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck">
+          <label class="form-check-label" for="gridCheck">
+            Check me out
+          </label>
+        </div>
+    </div>
+        <button type="submit" class="btn btn-primary"> Search </button>
+
+
+    </div>
+
+
+</form>
+
+<hr />
+
+
+
+
+<!--
+    <input id="datepicker" width="276" />
+
+    <script type="text/javascript">
+       $(function () {
+           $("#datepicker").datepicker({
+            format: " yyyy",
+            viewMode: "years",
+            minViewMode: "years"
+            });
+        });
+    </script>
+-->
+
+
+
+
+
+
+
+
+
+{% endblock content %}

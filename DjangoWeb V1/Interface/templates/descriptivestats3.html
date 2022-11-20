@@ -1,0 +1,389 @@
+{% extends "base.html" %}
+{% load static %} 
+{% static "indu.csv" %}
+<!--https://stackoverflow.com/questions/54960091/loading-a-csv-file-in-d3-js-inside-django-is-not-working -->
+<script>
+{% block jquery %}
+$.ajax({
+    success: function(data) {
+        setchart()
+        piechart()
+        setchart2()
+        hochart()
+    },
+    error: function(error_data){
+        console.log("error")
+        console.log(error_data)
+    }
+})
+prgcolorset = [
+    'rgba(73,170,30,0.4)',
+    'rgba(50, 106, 21,0.4)',
+    'rgba(219, 58, 29,0.4)',
+    'rgba(150, 58, 29, 0.4)',
+    'rgba(60, 206, 209, 0.4)',
+    'rgba(60, 157, 209, 0.4)',
+    'rgba(60, 90, 209, 0.4)',
+    'rgba(280, 243, 36, 0.4)',
+    'rgba(230, 243, 36, 0.4)',
+]
+prgcolorborderset =[
+    'rgba(73,170,30,1)',
+    'rgba(50, 106, 21,1)',
+    'rgba(219, 58, 29, 1)',
+    'rgba(150, 58, 29, 1)',
+    'rgba(60, 206, 209, 1)',
+    'rgba(60, 157, 209, 1)',
+    'rgba(60, 90, 209, 1)',
+    'rgba(280, 243, 36, 1)',
+    'rgba(230,243, 36, 1)',
+
+]
+function setchart() {
+    var ctx = document.getElementById('myChart').getContext('2d');
+    ctx.shadowBlur=20;
+    ctx.shadowColor="black";
+    var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels:[ 
+                {% for year in STUyear %}
+                  {{ year }},
+                {% endfor %}                  
+                  ] ,
+                datasets: [{
+                    label: '# of students',
+                    data: {{ DATAGRAPH }},
+            backgroundColor: prgcolorset ,
+            borderColor: prgcolorborderset,
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+
+        title: {
+            display: false,
+            text: 'Students per year'
+        },
+
+        legend: {
+            display: true,
+            position:'bottom',
+        },
+        tooltips: {
+            mode: 'x'
+        }
+    }
+});
+
+}
+function piechart() {
+    var ctx = document.getElementById('piechart').getContext('2d');
+    var pieChart = new Chart(ctx, {
+    type: 'doughnut',
+    data:{
+        labels: ['Cergy','Pau'],
+        datasets: [{
+                    label: '% of students',
+                    data: {{ D_stddist }},
+            backgroundColor: ['#ffee58','#ffa726'],
+            borderColor: '#33691e',
+            borderWidth: 3,
+        }]
+    },
+    options: {
+        title: {
+            display: false,
+            text: 'Students in Campus'
+        },
+        legend:{
+            display:true,
+            position:'bottom',
+        },
+    },
+    plugins:{
+        labels: {
+            render: 'percentage',
+            fontColor: ['green', 'white'],
+            precision: 2
+            }
+    }
+});
+}
+function setchart2() {
+    var ctx = document.getElementById('myChart2').getContext('2d');
+    ctx.shadowBlur=20;
+    ctx.shadowColor="black";
+    var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['ADEO1', 'ADEO2' ,'CPI1' ,'CPI2', 'ING1' ,'ING2' ,'ING3' ,'MobM2' ,'QFRM1' ,'QFRM2'], <!--put the prg-->
+      datasets: [{
+          label: "Cergy(Amount of students)",
+          type: "line",
+          borderColor: '#26c6da',
+          data: {{ D_cergyc }},
+          fill: false
+        },
+          {
+          label: "Pau(Amount of students)",
+          type: "line",
+          borderColor: '#5c6bc0',
+          data: {{ D_pauc }},
+          fill: false
+        },
+          {
+          label: "Cergy(Mean salary)",
+          type: "bar",
+          backgroundColor: '#ffe082',
+          data: {{ D_cergys }},
+        }, {
+          label: "Pau(Mean salary)",
+          type: "bar",
+          backgroundColor: '#bf360c',
+          backgroundColorHover: '#ffab91',
+          data:{{ D_paus }},
+        }
+
+      ]
+    },
+    options: {
+      title: {
+        display: false,
+        text: 'Population growth (millions): Europe & Africa'
+      },
+      legend: { display: true ,
+                position:'bottom'},
+      plugins: {
+          labels: false
+      }
+    }
+});
+}
+
+function hochart() {
+    var ctx = document.getElementById('hochart').getContext('2d');
+    var hochart = new Chart(ctx, {
+    type: 'horizontalBar',
+    data: {
+      labels:['TOTAL - PAU', 'CGI - COURBEVOIE', 'AUBAY', 'NOVOSIBIRSK STATE UNIVERSITY', "VAL'EISTI", 'OSAKA PREFECTURE UNIVERSITY', 'DASSAULT SYSTEMES', 'SOCIETE GENERALE', 'SOPRA GROUP - LA DEFENSE', 'TALAN SOLUTIONS'],
+      datasets: [
+        {
+          label: "Amount of record(s)",
+          backgroundColor: ["rgba(13, 71, 161,0.3)", "rgba(1, 87, 155,0.3)","rgba(0, 96, 100,0.3)","rgba(0, 77, 64,0.3)","rgba(27, 94, 32,0.6)","rgba(51, 105, 30,0.6)","rgba(130, 119, 23,0.6)","rgba(245, 127, 23,0.6)","rgba(249, 168, 37,0.6)","rgba(251, 192, 45,0.6)","rgba(253, 216, 53,0.6)"],
+          data: {{ D_top }}
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: ''
+      },
+        plugins: {
+          labels: false
+      },
+      scales: {
+        yAxes: [{ticks: {
+                mirror: true,
+                fontColor: "#3e2723",
+                padding:"-10",
+                rotate:"40"
+            }}],
+
+    }
+    }
+});
+}
+
+
+{% endblock %}
+</script>
+
+
+
+{% block content %}
+
+<!-- <div id="map-container-google-2" class="z-depth-1-half map-container" >
+  <iframe src="https://maps.google.com/maps?q=paris&t=&z=10&ie=UTF8&iwloc=&output=embed" frameborder="0"
+    style="border:0" allowfullscreen></iframe>
+</div>
+<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
+
+<div class="row" >
+          <div class="col-lg-3 col-md-5 col-sm-5 " >
+            <div class="card card-stats" >
+              <div class="card-body" >
+                <div class="row">
+                  <div class="col-2 col-md-3" >
+                    <img  src="\static\images\record.png" height="40">
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category">Number of </p>
+                      <p class="card-title" style="color:#0c2646;  font-size:20px ; font-weight: bold ">
+                        Records
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats" style="color: #d39e00;" >
+                    {{ num_records }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-5 col-sm-5">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+
+                      <img  src="\static\images\student.png" height="40">
+
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category">Number of </p>
+                      <p class="card-title" style="color:#0c2646; font-size:20px ; font-weight: bold ">
+                        Students
+                        <p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats" style="color: #c82333;" >
+                  {{ num_std }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-5 col-sm-5">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+
+                      <img  src="\static\images\enterprise.png" height="40">
+
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category">Number of </p>
+                      <p class="card-title" style="color:#0c2646; font-size:20px ; font-weight: bold ">
+                            Enterprises
+                        <p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats" style="color: #34ce57;">
+                  {{ num_entre }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-5 col-sm-5 " >
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-5 col-md-4">
+                      <img  src="\static\images\salary.png" height="40">
+                  </div>
+                  <div class="col-7 col-md-8">
+                    <div class="numbers">
+                      <p class="card-category" >Average of</p>
+                      <p class="card-title" style="color:#0c2646; font-size:20px ; font-weight: bold ">
+                        Salary
+                        <p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer ">
+                <hr>
+                <div class="stats" style="color: #00bbff;">
+                  {{ mean_sal }}
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+</div>
+<div class="row">
+    <div class="col-lg-4  text-center" >
+            <div class="card-chart ">
+              <div class="card-header ">
+                <h5 class="card-title">Students Distribution</h5>
+                <p class="card-category">In Campus</p>
+              </div>
+               <div class="inside-left">
+                    <canvas class="my-4 w-10" id="piechart" width="100%" height="70"></canvas>
+                 </div>
+              </div>
+            </div>
+
+
+    <div class="col-lg-8 " >
+        <div class="card-chart flex-column">
+              <div class="card-header ">
+                <h5 class="card-title">Salary and amount of students </h5>
+                 <p class="card-category">per departments</p>
+                <div class="inside">
+                    <canvas class="my-4 w-10" id="myChart2" width="100%" height="30"  ></canvas>
+                </div>
+              </div>
+        </div>
+        <div class="card-chart flex-column">
+              <div class="card-header ">
+                <h5 class="card-title">Students per year</h5>
+                  <p class="card-category">From 2014 til last year</p>
+                  <div class="inside">
+                    <canvas class="my-4 w-10" id="myChart" width="100%" height="25" ></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8 " >
+          <div class="card-chart " >
+                <div class="card-header " >
+                  <h5 class="card-title text-center">Top 10 enterprises</h5>
+                    <p class="card-category text-center">amount of records work in the company</p>
+                    <div class="inside">
+                      <canvas class="my-4 w-10" id="hochart" width="100%" height="80" ></canvas>
+                  </div>
+                </div>
+          </div>
+      </div>
+
+        <div id="my_dataviz"></div>
+        <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+    </div>
+</div>
+
+ <!--   Core JS Files   -->
+  <scripst src="../static/assets/js/core/jquery.min.js"></script>
+  <scripst src="../static/assets/js/core/popper.min.js"></script>
+  <scripst src="../static/assets/js/core/bootstrap.min.js"></script>
+  <scripst src="../static/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+  
+  <scripst src="htdtps://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <scripst src="https://d3js.org/d3.v4.js"></script> 
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+{% endblock %}

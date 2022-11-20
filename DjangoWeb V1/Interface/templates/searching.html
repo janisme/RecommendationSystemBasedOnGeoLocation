@@ -1,0 +1,152 @@
+<!-- indu 15 may -->
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<hr />
+<div class="row" >
+        <div class="col-lg-3 col-md-5 col-sm-5 " >
+          <div class="card card-stats" >
+            <div class="card-body" >
+              <div class="row">
+                <div class="col-2 col-md-3" >
+                  <img  src="\static\images\record.png" height="40">
+                </div>
+                <div class="col-7 col-md-8">
+                  <div class="numbers">
+                    <p class="card-category">Number of </p>
+                    <p class="card-title" style="color:#0c2646;  font-size:20px ; font-weight: bold ">
+                      Records
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer ">
+              <hr>
+              <div class="stats" style="color: #d39e00;" >
+                  {{ num_records }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-5 col-sm-5">
+          <div class="card card-stats">
+            <div class="card-body ">
+              <div class="row">
+                <div class="col-5 col-md-4">
+
+                    <img  src="\static\images\student.png" height="40">
+
+                </div>
+                <div class="col-7 col-md-8">
+                  <div class="numbers">
+                    <p class="card-category">Number of </p>
+                    <p class="card-title" style="color:#0c2646; font-size:20px ; font-weight: bold ">
+                      Students
+                      <p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer ">
+              <hr>
+              <div class="stats" style="color: #c82333;" >
+                {{ num_std }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-5 col-sm-5">
+          <div class="card card-stats">
+            <div class="card-body ">
+              <div class="row">
+                <div class="col-5 col-md-4">
+
+                    <img  src="\static\images\enterprise.png" height="40">
+
+                </div>
+                <div class="col-7 col-md-8">
+                  <div class="numbers">
+                    <p class="card-category">Number of </p>
+                    <p class="card-title" style="color:#0c2646; font-size:20px ; font-weight: bold ">
+                          Enterprises
+                      <p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer ">
+              <hr>
+              <div class="stats" style="color: #34ce57;">
+                {{ num_entre }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-5 col-sm-5 " >
+          <div class="card card-stats">
+            <div class="card-body ">
+              <div class="row">
+                <div class="col-5 col-md-4">
+                    <img  src="\static\images\salary.png" height="40">
+                </div>
+                <div class="col-7 col-md-8">
+                  <div class="numbers">
+                    <p class="card-category" >Average of</p>
+                    <p class="card-title" style="color:#0c2646; font-size:20px ; font-weight: bold ">
+                      Salary
+                      <p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer ">
+              <hr>
+              <div class="stats" style="color: #00bbff;">
+                {{ mean_sal }}
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+</div>
+<div class="row pt-50">
+        <table class="table table-striped table-sm">
+        <tbody>
+        
+        {% for a in searched_result %}                          <!-- this must work on the latest version of the merged table, i.e recent version queried by -->
+        <tr>
+            <td> {{ a.ID_ANO }}   </td>
+            <td> {{ a.PRG }}   </td>
+            <td> {{ a.ADR_VILLE }}   </td>
+            <td> {{ a.ADR_CP }}   </td>
+            <td> {{ a.REMUNERATION }}   </td>
+            <td> {{ a.ENTREPRISE }}   </td>
+            <td> {{ a.ANNEE_SCOLAIRE }}   </td>
+          </tr>
+        {% endfor %}
+
+            </tbody>
+        </table>
+</div>
+
+
+<!--
+    <input id="datepicker" width="276" />
+
+    <script type="text/javascript">
+       $(function () {
+           $("#datepicker").datepicker({
+            format: " yyyy",
+            viewMode: "years",
+            minViewMode: "years"
+            });
+        });
+    </script>
+-->
+
+
+
+
+{% endblock content %}

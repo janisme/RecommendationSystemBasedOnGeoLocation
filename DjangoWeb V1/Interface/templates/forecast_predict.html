@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="GET" >
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Forecast - Predict</h1>
+
+      <div class="btn-toolbar mb-2 mb-md-0">
+
+        <label  for="inputState" class="mdb-main-label">Version:</label>
+        <select id="inputState" class="mdb-select md-form colorful-select dropdown-dark" name="version">
+          <option selected>{{ SELECTED_VERSION }}</option>
+          {% for item in LIST_VERSIONS %}
+          <option>{{ item }}</option>
+          {% endfor %}
+        </select>
+        <div class="btn-group mr-2">
+
+            <!-- <a class="nav-link" href="/Interface/forecast_predict_update">
+              <button type="button" class="btn btn-lg btn-block btn-primary" 
+              data-toggle="tooltip" data-placement="bottom" title="Update the Versions of Forecast Weight table. ">
+              UPDATE</button>
+              </a> -->
+          <!-- <button type="submit" class="btn btn-primary"> Apply </button> -->
+          <!-- <button type="submit" class="btn btn-sm btn-outline-primary">Apply</button> -->
+        </div>
+      </div>      
+    </div>
+
+    <div class="container mt-5">
+      <div class="form-row">
+          <div class="form-group col-md-4">
+                <label for="inputState">Program:</label>
+                <select id="inputState" class="form-control" name="program">
+                  <option selected>{{program_selected}}</option>
+                    {% for item in prg %}
+                      <option>{{ item }}</option>
+                    {% endfor %}
+                </select>
+          </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputState">Campus:</label>
+          <select id="inputState" class="form-control" name="campus">
+            <option selected>{{campus_selected}}</option>
+            {% for item in campus %}
+                <option>{{ item }}</option>
+              {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="inputState">Ville:</label>
+          <select id="inputState" class="form-control" name="ville">
+            <option selected>{{ville_selected}}</option>
+            {% for item in ville %}
+                <option>{{ item }}</option>
+              {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+    
+  <div class="text-right">
+    <div class="btn-group mr-2 ">
+<!-- CHANGE TO SUBMIT FORM -->
+        <a class="nav-link" href="#">  
+          <button type="submit" class="btn btn-lg btn-block btn-primary" 
+          data-toggle="tooltip" data-placement="bottom" title="Update the Versions of Forecast Weight table. ">
+          FORECAST LIST OF ENTERPRISES for INTERSHIP</button>
+          </a>
+      <!-- <button type="submit" class="btn btn-primary"> Apply </button> -->
+      <!-- <button type="submit" class="btn btn-sm btn-outline-primary">Apply</button> -->
+    </div>
+  </div>
+</form>  
+
+  {% if has_result %}
+  <div class="table-responsive">
+      <table class="table table-striped table-sm">
+        <thead>
+          <tr>
+              <th>ENTERPRISE</th>
+              <th>Nb Students same PRG</th>
+              <th>Nb Students same Campus</th>
+              <th>Nb Students same ADR</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+    {% for a,b,c,d in enterprise_list.data %}
+    <tr>
+        <td> {{ a }}   </td>
+        <td> {{ b }}   </td>
+        <td> {{ c }}   </td>
+        <td> {{ d }}   </td>
+      </tr>
+    {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+  {% endif %}
+
+
+
+
+
+
+{% endblock %}
